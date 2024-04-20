@@ -59,9 +59,14 @@ app.use("/api/follow", FollowRoutes);
 app.use("/", AuthRoutes);
 app.use("/", AuthService);
 
-//Ruta principal
+// Ruta principal
 app.get("/", (req, res) => {
-  res.send("¡Bienvenido a la API de Mys!");
+  res.send("¡Bienvenido a la API!");
+});
+
+// Manejar solicitud de /favicon.ico
+app.get("/favicon.ico", (req, res) => {
+  res.status(204).end();
 });
 
 app.listen(port, () => {
