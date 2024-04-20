@@ -18,7 +18,7 @@ const port = 3900;
 
 // Configuración de CORS
 const corsOptions = {
-  origin: "*", //["http://localhost:5173", "http://127.0.0.1:5173"],
+  origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
   credentials: true, // Indica que las credenciales deben ser incluidas en la solicitud
 };
 
@@ -52,16 +52,6 @@ const PublicationRoutes = require("./routes/publication");
 const FollowRoutes = require("./routes/follow");
 const AuthRoutes = require("./routes/auth");
 const AuthService = require("./services/auth");
-
-// Manejar las solicitudes GET a la raíz "/"
-app.use("/", (req, res) => {
-  res.send("¡Bienvenido a la API!");
-});
-
-app.use("/favicon.ico", (req, res) => {
-  // Envía un estado 204 (No Content) y termina la respuesta
-  res.status(204).end();
-});
 
 app.use("/api/user", UserRoutes);
 app.use("/api/publication", PublicationRoutes);
