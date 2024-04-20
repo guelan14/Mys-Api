@@ -65,7 +65,7 @@ app.get("/", (req, res) => {
 });
 
 // Manejar solicitud de /favicon.ico
-app.get("/favicon.icon", (req, res) => {
+app.get("/favicon.ico", (req, res) => {
   res.status(204).end();
 });
 
