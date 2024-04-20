@@ -16,6 +16,15 @@ connection();
 const app = express();
 const port = 3900;
 
+// Agregar manejo de ruta para favicon.ico
+app.get("/favicon.ico", function (req, res) {
+  res.status(204).end();
+});
+
+app.get("/", function (req, res) {
+  res.send("HOLA");
+});
+
 // Configuración de CORS
 const corsOptions = {
   origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
