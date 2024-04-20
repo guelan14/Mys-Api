@@ -53,31 +53,21 @@ const FollowRoutes = require("./routes/follow");
 const AuthRoutes = require("./routes/auth");
 const AuthService = require("./services/auth");
 
+// Manejar las solicitudes GET a la raíz "/"
+app.use("/", (req, res) => {
+  res.send("¡Bienvenido a la API!");
+});
+
+app.use("/favicon.ico", (req, res) => {
+  // Envía un estado 204 (No Content) y termina la respuesta
+  res.status(204).end();
+});
+
 app.use("/api/user", UserRoutes);
 app.use("/api/publication", PublicationRoutes);
 app.use("/api/follow", FollowRoutes);
 app.use("/", AuthRoutes);
 app.use("/", AuthService);
-
-// Agregar manejo de ruta para favicon.ico
-app.get("/favicon.ico", (req, res) => {
-  res.status(204).end(); // Envía un estado 204 (No Content) y termina la respuesta
-});
-
-// Manejar las solicitudes GET a la raíz "/"
-app.get("/", (req, res) => {
-  res.send("¡Bienvenido a la API!");
-});
-
-// Si deseas manejar todas las demás solicitudes GET que no coincidan con ninguna ruta definida
-app.get("*", (req, res) => {
-  res.status(404).send("Página no encontrada"); // Envía un estado 404 (Not Found) para cualquier otra solicitud GET
-});
-
-// Si deseas manejar todas las demás solicitudes HTTP que no coincidan con ninguna ruta definida
-app.all("*", (req, res) => {
-  res.status(404).send("Página no encontrada"); // Envía un estado 404 (Not Found) para cualquier otra solicitud
-});
 
 app.listen(port, () => {
   console.log("Node is running on ", port);
