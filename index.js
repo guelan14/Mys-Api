@@ -57,8 +57,12 @@ app.use("/api/user", UserRoutes);
 app.use("/api/publication", PublicationRoutes);
 app.use("/api/follow", FollowRoutes);
 app.use("/", AuthRoutes);
-
 app.use("/", AuthService);
+
+//Ruta principal
+app.get("/", (req, res) => {
+  res.send("¡Bienvenido a la API de Mys!");
+});
 
 app.listen(port, () => {
   console.log("Node is running on ", port);
