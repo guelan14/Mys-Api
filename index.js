@@ -59,14 +59,18 @@ app.use("/api/follow", FollowRoutes);
 app.use("/", AuthRoutes);
 app.use("/", AuthService);
 
+function ignoreFavicon(req, res, next) {
+  if (req.originalUrl.includes("favicon.ico")) {
+    res.status(204).end();
+  }
+  next();
+}
+
+app.use(ignoreFavicon);
+
 // Ruta principal
 app.get("/", (req, res) => {
   res.send("¡Bienvenido a la API!");
-});
-
-// Manejar solicitud de /favicon.ico
-app.get("/favicon.ico", (req, res) => {
-  res.status(204).end();
 });
 
 app.listen(port, () => {
