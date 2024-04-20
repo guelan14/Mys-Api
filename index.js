@@ -59,14 +59,24 @@ app.use("/api/follow", FollowRoutes);
 app.use("/", AuthRoutes);
 app.use("/", AuthService);
 
-app.get("/favicon.ico", function (req, res) {
-  res.status(204);
-  res.end();
+// Agregar manejo de ruta para favicon.ico
+app.get("/favicon.ico", (req, res) => {
+  res.status(204).end(); // Envía un estado 204 (No Content) y termina la respuesta
 });
 
-// Ruta principal
+// Manejar las solicitudes GET a la raíz "/"
 app.get("/", (req, res) => {
   res.send("¡Bienvenido a la API!");
+});
+
+// Si deseas manejar todas las demás solicitudes GET que no coincidan con ninguna ruta definida
+app.get("*", (req, res) => {
+  res.status(404).send("Página no encontrada"); // Envía un estado 404 (Not Found) para cualquier otra solicitud GET
+});
+
+// Si deseas manejar todas las demás solicitudes HTTP que no coincidan con ninguna ruta definida
+app.all("*", (req, res) => {
+  res.status(404).send("Página no encontrada"); // Envía un estado 404 (Not Found) para cualquier otra solicitud
 });
 
 app.listen(port, () => {
