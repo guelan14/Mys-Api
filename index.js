@@ -18,16 +18,16 @@ const port = 3900;
 
 // Agregar manejo de ruta para favicon.ico
 app.get("/favicon.ico", function (req, res) {
-  res.status(204).end();
+  res.send("<h1>Api from M.A.N.</h1>");
 });
 
-app.get("/", function (req, res) {
-  res.send("HOLA");
+app.get("/", (req, res) => {
+  res.send("<h1>Api from M.A.N.</h1>");
 });
 
 // Configuración de CORS
 const corsOptions = {
-  origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
+  origin: "*", //["http://localhost:5173", "http://127.0.0.1:5173"],
   credentials: true, // Indica que las credenciales deben ser incluidas en la solicitud
 };
 
