@@ -18,7 +18,7 @@
     "express-session": "^1.18.0",
     "jwt-simple": "^0.5.6",
     "moment": "^2.29.4",
-    "mongodb": "^6.5.0",
+    "mongodb": "6.5.0",
     "mongoose": "^8.3.1",
     "mongoose-paginate-v2": "^1.8.0",
     "mongoose-pagination": "^1.0.0",
