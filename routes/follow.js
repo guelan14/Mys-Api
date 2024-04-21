@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const FollowController = require("../controllers/follow");
-const { isLoggedIn } = require("../middlewares/checkAuth");
+const isLoggedIn = require("../middlewares/checkAuth");
 
 router.get("/test-follow", FollowController.followTest);
 router.post("/save/:id", FollowController.save);

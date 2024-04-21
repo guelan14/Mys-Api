@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const AuthController = require("../controllers/auth");
-const { isLoggedIn } = require("../middlewares/checkAuth");
-const session = require("express-session");
 const passport = require("passport");
 
 router.post("/api/register", AuthController.register);
